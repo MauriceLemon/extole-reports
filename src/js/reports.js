@@ -91,6 +91,10 @@ var ReportsView = Backbone.View.extend({
 var reps = new Reports();
 reps.fetch({
   success: function() {
+    var data = new Report (JSON.parse(localStorage.getItem('userReport')));
+    reps.add(data);
+    // console.log(userReport);
+
     var repsView = new ReportsView({collection: reps});
     $('#reports').html(repsView.render().$el);
   },
