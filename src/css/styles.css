@@ -1,0 +1,99 @@
+/*vdskljglsdk*/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+/********* BASIC COMPONENTS *********/
+
+html, body {
+    height: 100%;
+}
+body {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 20px;
+    color: #ffffff;
+    background-image: linear-gradient(to bottom right, #E11B4C, #a81439);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+p, h1 {
+    text-align: center;
+}
+
+.content {
+    width: 60%;
+    margin: 0 auto;
+    vertical-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.logo {
+    height: 70px;
+}
+.report-form {
+    flex: 1 1 300px;
+    width: 300px;
+    margin-top: 30px;
+
+}
+label {
+    font-size: 70%;
+    font-weight: 300;
+}
+
+input {
+    text-indent: 10px;
+}
+
+input::placeholder {
+    color: rgba(0, 0, 0, 0.31);
+}
+
+input, select {
+    font-size: 80%;
+    margin: 0 auto;
+    height: 40px;
+    width: 100%;
+    /*max-width: 250px;*/
+    border: transparent 1px solid;
+    border-radius: 6px;
+    background-color: rgb(255, 255, 255);
+}
+
+.btn {
+    width: 300px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: #0fb682;
+    color: white;
+    cursor: pointer;
+}
+
+
+.links {
+}
+
+.links a {
+    text-decoration: none;
+    color: white;
+    font-size: 80%;
+}
+
+

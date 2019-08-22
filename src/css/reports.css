@@ -1,0 +1,82 @@
+.reports-body {
+    justify-content: flex-start;
+    padding-top: 30px;
+    background-size: cover;
+}
+
+.reports-content {
+    width: 80%;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: center;
+}
+
+.report-card:first-child {
+    margin-top: 30px;
+}
+.report-card {
+    background-color: white;
+    border: transparent 1px solid;
+    border-radius: 10px;
+    align-self: flex-start;
+
+    flex: 0 0 auto;
+    width: 100%;
+    height: fit-content;
+    margin-top: 10px;
+    padding: 16px 16px 16px 16px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.left {
+    flex: 3 1 auto;
+
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.right {
+    flex: 1 1 auto;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content:center;
+}
+
+.report-ceil {
+    background-color: rgba(176, 196, 222, 0.21);
+    height: fit-content;
+    border-radius: 6px;
+    padding: 10px 20px 10px 20px;
+    margin: 8px 10px 8px 0px;
+    font-size: 80%;
+    flex: 0 0 auto;
+}
+
+.report-ceil p, .report-ceil label {
+    color: black;
+    text-align: left;
+  }
+
+.btn-delete, .btn-download {
+    cursor: pointer;
+    height: 40px;
+    width: fit-content;
+    background-color: white;
+    color: black;
+    border: transparent 1px solid;
+    border-radius: 6px;
+    flex: 0 0 auto;
+    margin-right: 10px;
+    margin-top: 0px;
+    padding: 0px 20px 0px 20px;
+    align-self: center;
+}
