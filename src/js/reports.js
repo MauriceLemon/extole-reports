@@ -48,6 +48,7 @@ var ReportsView = Backbone.View.extend({
   }
 });
 
+
 var reports = new Reports([
   new Report({
     category: 'Overall',
