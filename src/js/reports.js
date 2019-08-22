@@ -1,5 +1,5 @@
 var Report = Backbone.Model.extend({
-  urlRoot: "/js/api/reports",
+  urlRoot: "../api/reports",
 });
 
 var Reports = Backbone.Collection.extend({
@@ -47,9 +47,6 @@ var ReportsView = Backbone.View.extend({
     return this;
   }
 });
-
-let reps = fetch('http://localhost:63342/extole-reports/api/reports_db.js');
-console.log(reps);
 
 var reports = new Reports([
   new Report({
