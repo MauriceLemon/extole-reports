@@ -35,6 +35,26 @@
     flex-wrap: wrap;
 }
 
+.loader {
+    margin: 1rem auto;
+    text-align: center;
+}
+
+.loader svg {
+    height: 1.5rem;
+    width: 1.5rem;
+    fill: #F59A83;
+    transform-origin: 44% 50%;
+    animation: rotate 1.5s infinite linear;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0); }
+    100% {
+        transform: rotate(360deg); }
+}
+
 .left {
     flex: 4 1 auto;
 

@@ -3,7 +3,7 @@ var Report = Backbone.Model.extend({
 });
 
 var Reports = Backbone.Collection.extend({
-  Model: Report,
+  model: Report,
   url: "../api/reports_db"
 });
 
@@ -21,6 +21,7 @@ var ReportView = Backbone.View.extend({
 
   onReportRemove: function(report) {
     this.$el.find("li#" + report.id).remove();
+    localStorage.removeItem('userReport');
     this.remove();
   },
 
@@ -31,7 +32,9 @@ var ReportView = Backbone.View.extend({
     "click .btn-delete": "onDelete"
   },
 
-  onDelete: function(e) {
+  onDelete: function() {
+    this.$el.find("li#" + reps.id).remove();
+    localStorage.removeItem('userReport');
     this.remove();
   },
 
@@ -57,48 +60,73 @@ var ReportsView = Backbone.View.extend({
 });
 
 // MANUALY CREATED COLLECTION
-// var reports = new Reports([
-//   new Report({
-//     category: 'lolo',
-//     byUsername: 'Infersoul',
-//     byFullName: 'Maria Semionova',
-//     email: 'maria@mail.com',
-//     date: new Date(new Date() - 150000).toLocaleString('en-GB'),
-//     id: 1
-//   }),
-//   new Report({
-//     category: 'Users Activity',
-//     byUsername: 'Aosoth',
-//     byFullName: 'Anastasia Cernova',
-//     email: 'anastasia@mail.com',
-//     date: new Date(new Date() - 100000).toLocaleString('en-GB'),
-//     id: 2
-//   }),
-//   new Report({
-//     category: 'Conversion Rate',
-//     byUsername: 'Aosoth',
-//     byFullName: 'Anastasia Cernova',
-//     email: 'anastasia@mail.com',
-//     date: new Date().toLocaleString('en-GB'),
-//     id: 3
-//   })
-// ]);
+var reports = new Reports([
+  new Report({
+    category: 'lolo',
+    byUsername: 'Infersoul',
+    byFullName: 'Maria Semionova',
+    email: 'maria@mail.com',
+    date: new Date(new Date() - 150000).toLocaleString('en-GB'),
+    id: 1
+  }),
+  new Report({
+    category: 'Users Activity',
+    byUsername: 'Aosoth',
+    byFullName: 'Anastasia Cernova',
+    email: 'anastasia@mail.com',
+    date: new Date(new Date() - 100000).toLocaleString('en-GB'),
+    id: 2
+  }),
+  new Report({
+    category: 'Conversion Rate',
+    byUsername: 'Aosoth',
+    byFullName: 'Anastasia Cernova',
+    email: 'anastasia@mail.com',
+    date: new Date().toLocaleString('en-GB'),
+    id: 3
+  })
+]);
 //
 // var reportsView = new ReportsView({collection: reports});
 // $('#reports').html(reportsView.render().$el);
 
 //COLLECTION FROM SERVER
 var reps = new Reports();
-reps.fetch({
-  success: function() {
-    var data = new Report (JSON.parse(localStorage.getItem('userReport')));
-    reps.add(data);
-    // console.log(userReport);
+// console.log(reps);
 
-    var repsView = new ReportsView({collection: reps});
-    $('#reports').html(repsView.render().$el);
-  },
-  error: function (errorResponse) {
-    console.log(errorResponse);
-  }
-});
+async function reportsFetch(reps) {
+  await reps.fetch({
+    success: function() {
+
+      if (localStorage.getItem('userReport')) {
+        var data = new Report(JSON.parse(localStorage.getItem('userReport')));
+        reps.add(data);
+        // console.log(data);
+      }
+
+      var repsView = new ReportsView({collection: reps});
+      $('#reports').html(repsView.render().$el);
+
+    },
+    error: function (errorResponse) {
+      console.log(errorResponse);
+    }
+  });
+}
+reportsFetch(reps);
+
+
+//LOADER
+var elementStrings = {
+  loader: 'loader'
+};
+
+var renderLoader = function(parent) {
+  var loader = '<div class="' + elementStrings.loader + '">\
+            <svg>\
+                <use href="img/icons.svg#icon-cw"></use>\
+            </svg>\
+        </div>';
+  parent.parentElement.insertAdjacentHTML('afterbegin', loader);
+};
+// renderLoader(document.body);

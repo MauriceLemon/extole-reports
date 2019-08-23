@@ -47,10 +47,12 @@
             </div>
         </div>
         <div class="right">
-            <button type="submit" class="btn-download">💾 Download report</button>
+            <div class="polling">
+                <button type="submit" class="btn-download" onclick="renderLoader(this)">💾 Download report</button>
+            </div>
             <button type="submit" class="btn-delete">❌ Delete report</button>
         </div>
     </script>
-    <script src="js/reports.js" type="module"></script>
+    <script src="js/reports.js"></script>
 </body>
 </html>
